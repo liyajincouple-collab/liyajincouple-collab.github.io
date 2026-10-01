@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Стоимость и условия — LiyaJin School</title>
+<meta name="description" content="Стоимость, оплата и правила переноса занятий корейским в LiyaJin School.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Стоимость и условия занятий — LiyaJin School">
+<meta property="og:description" content="Цены, оплата и правила переноса занятий.">
+<meta property="og:image" content="https://liyajincouple-collab.github.io/price/og.png">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fcf9f6;
+    --ink: #2b1d1f;
+    --ink-soft: #5d4b4e;
+    --pink: #f6dbe3;
+    --pink-deep: #c9567a;
+    --peach: #fbeee6;
+    --lilac: #ebe4f7;
+    --line: #eadfd9;
+    --card: #ffffff;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Nunito", "Segoe UI", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 0 16px 48px; }
+  .hero { display: block; width: 100%; height: auto; margin: 0 auto; }
+  .title {
+    background: var(--pink);
+    border-radius: 999px;
+    text-align: center;
+    font-weight: 900;
+    font-size: clamp(20px, 5.6vw, 30px);
+    line-height: 1.25;
+    padding: 14px 20px;
+    margin: 4px 0 14px;
+  }
+  .lead { text-align: center; color: var(--ink-soft); margin: 0 0 26px; }
+
+  h2 {
+    font-size: 21px; font-weight: 900; margin: 34px 0 12px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  h2 .ico { font-size: 22px; }
+
+  .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .tile {
+    border-radius: 20px; padding: 16px 10px 14px; text-align: center;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .tile.t1 { background: var(--peach); }
+  .tile.t2 { background: var(--pink); }
+  .tile.t3 { background: var(--lilac); }
+  .tile .name { font-weight: 800; font-size: 15px; line-height: 1.25; min-height: 38px; }
+  .tile .price {
+    background: rgba(255,255,255,.65); border-radius: 14px;
+    margin: 12px 0 10px; padding: 10px 4px 8px;
+  }
+  .tile .price b { display: block; font-size: clamp(20px, 5.4vw, 26px); font-weight: 900; line-height: 1.1; white-space: nowrap; }
+  .tile .price span { font-size: 12.5px; color: var(--ink-soft); }
+  .tile .total { font-size: 12.5px; color: var(--ink-soft); line-height: 1.35; }
+  .tile .total b { display: block; font-size: 17px; color: var(--ink); font-weight: 800; }
+  .note { font-size: 14px; color: var(--ink-soft); margin: 12px 2px 0; }
+
+  .row {
+    margin-top: 12px; background: var(--card); border: 1px solid var(--line);
+    border-radius: 18px; padding: 14px 16px;
+    display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  }
+  .row .who { font-weight: 800; }
+  .row .who small { display: block; font-weight: 600; color: var(--ink-soft); font-size: 13.5px; }
+  .row .amt { font-weight: 900; font-size: 20px; white-space: nowrap; }
+
+  .box { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 6px 18px; }
+  .box ul { list-style: none; margin: 0; padding: 0; }
+  .box li { padding: 12px 0 12px 26px; position: relative; border-bottom: 1px solid var(--line); }
+  .box li:last-child { border-bottom: 0; }
+  .box li::before {
+    content: ""; position: absolute; left: 4px; top: 21px;
+    width: 9px; height: 9px; border-radius: 50%; background: var(--pink-deep);
+  }
+  .key {
+    background: var(--pink); border-radius: 18px; padding: 14px 18px; margin: 0 0 12px;
+    font-weight: 700;
+  }
+  .soft { background: var(--peach); border-radius: 18px; padding: 14px 18px; margin-top: 12px; color: var(--ink-soft); }
+
+  .cta {
+    margin-top: 36px; text-align: center; background: var(--pink); border-radius: 24px; padding: 22px 18px;
+  }
+  .cta p { margin: 0 0 14px; font-weight: 700; }
+  .btn {
+    display: inline-block; background: var(--ink); color: #fff; text-decoration: none;
+    font-weight: 800; padding: 12px 22px; border-radius: 999px;
+  }
+  footer { text-align: center; color: var(--ink-soft); font-size: 13px; margin-top: 28px; }
+
+  @media (max-width: 330px) {
+    .tiles { grid-template-columns: 1fr; }
+    .tile .name { min-height: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <img class="hero" src="hero.png" alt="LiyaJin School — Korean language" width="1024" height="280">
+
+  <div class="title">Стоимость и условия занятий</div>
+  <p class="lead">Спасибо за консультацию! Здесь всё о цене и правилах занятий.<br>Если что-то непонятно — просто напишите нам.</p>
+
+  <h2><span class="ico">🌸</span>Занятия с Лией · 60 минут</h2>
+  <div class="tiles">
+    <div class="tile t1">
+      <div class="name">1 занятие</div>
+      <div class="price"><b>2 200 ₽</b><span>за занятие</span></div>
+      <div class="total">Оплата<br>за одно занятие</div>
+    </div>
+    <div class="tile t2">
+      <div class="name">Пакет<br>4 занятия</div>
+      <div class="price"><b>1 900 ₽</b><span>за занятие</span></div>
+      <div class="total">Итого<b>7 600 ₽</b></div>
+    </div>
+    <div class="tile t3">
+      <div class="name">Пакет<br>8 занятий</div>
+      <div class="price"><b>1 900 ₽</b><span>за занятие</span></div>
+      <div class="total">Итого<b>15 200 ₽</b></div>
+    </div>
+  </div>
+  <p class="note">1 раз в неделю — это 4 занятия в месяц, 2 раза в неделю — 8 занятий.</p>
+
+  <div class="row">
+    <div class="who">Разговор с Джином<small>50 минут · для уровня <span style="white-space:nowrap">TOPIK 3–4</span></small></div>
+    <div class="amt">2 500 ₽</div>
+  </div>
+
+  <h2><span class="ico">💳</span>Оплата</h2>
+  <div class="box"><ul>
+    <li>Оплата — до начала занятия. Пакет оплачивается до первого занятия пакета.</li>
+    <li>Можно оплатить одно занятие или пакет из 4 или 8 занятий.</li>
+    <li>Предоплата за весь курс не требуется — только за текущий пакет.</li>
+    <li>Способ оплаты сообщаем лично.</li>
+  </ul></div>
+
+  <h2><span class="ico">🗓️</span>Перенос и отмена</h2>
+  <div class="key">Отменить занятие нельзя, но его можно перенести — 1 раз в месяц, если сообщить не позднее чем за 24 часа до начала.</div>
+  <div class="box"><ul>
+    <li>Менее чем за 24 часа до начала перенести занятие нельзя — оно списывается.</li>
+    <li>Если ученик не выходит на связь, преподаватель ждёт 15 минут, после чего занятие считается проведённым.</li>
+    <li>Технические проблемы со стороны ученика не являются основанием для бесплатного переноса. Рекомендуем заранее проверять подключение.</li>
+  </ul></div>
+  <div class="soft">🤝 Если занятие отменяет преподаватель — оно переносится бесплатно и не списывается.</div>
+
+  <h2><span class="ico">↩️</span>Возврат</h2>
+  <div class="box"><ul>
+    <li>Оплаченные занятия не возвращаются. Вместо отмены занятие можно перенести (1 раз в месяц).</li>
+  </ul></div>
+
+  <div class="cta">
+    <p>Остались вопросы? Напишите нам 💬</p>
+    <a class="btn" href="https://www.tiktok.com/@liyajin.school">Написать в TikTok</a>
+  </div>
+
+  <footer>LiyaJin School · корейский язык онлайн</footer>
+</div>
+</body>
+</html>
