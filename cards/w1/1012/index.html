@@ -6,14 +6,14 @@
 *{box-sizing:border-box}
 html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
 body{display:flex;justify-content:center;overscroll-behavior:none}
-.app{width:100%;max-width:560px;height:100vh;height:100dvh;display:flex;flex-direction:column;padding:10px 16px calc(10px + env(safe-area-inset-bottom))}
+.app{width:100%;min-width:0;max-width:560px;height:100vh;height:100dvh;display:flex;flex-direction:column;padding:10px 16px calc(10px + env(safe-area-inset-bottom))}
 header{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:34px}
 h1{font-size:15px;color:var(--deep);margin:0;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .count{font-size:13px;color:var(--soft);flex:none}
 .dots{display:flex;gap:4px;margin:6px 0 8px}
 .dots i{flex:1;height:4px;border-radius:2px;background:var(--line)}
 .dots i.on{background:var(--brand)}
-.stage{position:relative;flex:1 1 auto;min-height:0;display:flex;align-items:center;justify-content:center;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.stage{position:relative;flex:1 1 auto;min-height:0;min-width:0;width:100%;display:flex;align-items:center;justify-content:center;touch-action:pan-y;user-select:none;-webkit-user-select:none}
 .stage img{max-width:100%;max-height:100%;width:auto;height:auto;aspect-ratio:1080/1350;object-fit:contain;border-radius:8px;box-shadow:0 2px 10px rgba(90,46,62,.12);background:#fff}
 .tap{position:absolute;top:0;bottom:0;width:30%;background:none;border:0;cursor:pointer;padding:0}
 .tap.l{left:0}.tap.r{right:0}
