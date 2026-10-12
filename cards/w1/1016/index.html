@@ -17,7 +17,7 @@ h1{font-size:15px;color:var(--deep);margin:0;font-weight:700;white-space:nowrap;
 .stage img{max-width:100%;max-height:100%;width:auto;height:auto;aspect-ratio:1080/1350;object-fit:contain;border-radius:8px;box-shadow:0 2px 10px rgba(90,46,62,.12);background:#fff}
 .tap{position:absolute;top:0;bottom:0;width:30%;background:none;border:0;cursor:pointer;padding:0}
 .tap.l{left:0}.tap.r{right:0}
-.end{display:none;text-align:center;background:var(--card);border-radius:8px;padding:28px 20px;width:100%;box-shadow:0 2px 10px rgba(90,46,62,.12)}
+.end{display:none;position:relative;z-index:2;text-align:center;background:var(--card);border-radius:8px;padding:28px 20px;width:100%;box-shadow:0 2px 10px rgba(90,46,62,.12)}
 .end b{display:block;font-size:20px;color:var(--deep);margin-bottom:10px}
 .end p{margin:8px 0;line-height:1.45}
 .end audio{width:100%;margin-top:12px}
@@ -80,7 +80,7 @@ function show(i, push){
   [...$("dots").children].forEach((d, j) => d.classList.toggle("on", j <= k));
   $("count").textContent = (k + 1) + "/" + N;
   $("prev").disabled = k === 0; $("next").disabled = last;
-  $("tapL").style.display = k === 0 ? "none" : ""; $("tapR").style.display = last ? "none" : "";
+  $("tapL").style.display = (k === 0 || last) ? "none" : ""; $("tapR").style.display = last ? "none" : "";
   if (push !== false) history.replaceState(null, "", "#" + (k + 1));
 }
 $("panel").addEventListener("click", e => {
