@@ -1,0 +1,102 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>LiyaJin School · Карточка №12</title>
+<style>
+:root{--bg:#f7f3ef;--ink:#222;--soft:#6b5d63;--brand:#cc5877;--deep:#5a2e3e;--card:#fff;--line:#eadfe3}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family:Arial,Helvetica,"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+body{display:flex;justify-content:center;overscroll-behavior:none}
+.app{width:100%;min-width:0;max-width:560px;height:100vh;height:100dvh;display:flex;flex-direction:column;padding:10px 16px calc(10px + env(safe-area-inset-bottom))}
+header{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:34px}
+h1{font-size:15px;color:var(--deep);margin:0;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.count{font-size:13px;color:var(--soft);flex:none}
+.dots{display:flex;gap:4px;margin:6px 0 8px}
+.dots i{flex:1;height:4px;border-radius:2px;background:var(--line)}
+.dots i.on{background:var(--brand)}
+.stage{position:relative;flex:1 1 auto;min-height:0;min-width:0;width:100%;display:flex;align-items:center;justify-content:center;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.stage img{max-width:100%;max-height:100%;width:auto;height:auto;aspect-ratio:1080/1350;object-fit:contain;border-radius:8px;box-shadow:0 2px 10px rgba(90,46,62,.12);background:#fff}
+.tap{position:absolute;top:0;bottom:0;width:30%;background:none;border:0;cursor:pointer;padding:0}
+.tap.l{left:0}.tap.r{right:0}
+.end{display:none;position:relative;z-index:2;text-align:center;background:var(--card);border-radius:8px;padding:28px 20px;width:100%;box-shadow:0 2px 10px rgba(90,46,62,.12)}
+.end b{display:block;font-size:20px;color:var(--deep);margin-bottom:10px}
+.end p{margin:8px 0;line-height:1.45}
+.end audio{width:100%;margin-top:12px}
+.panel{flex:none;max-height:30vh;max-height:30dvh;overflow-y:auto;margin-top:8px}
+.say{display:flex;align-items:center;gap:10px;background:var(--card);border-left:4px solid var(--brand);border-radius:6px;padding:8px 10px;margin:0 0 6px}
+.say button{flex:none;width:40px;height:40px;border-radius:50%;border:0;background:var(--brand);color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.say button.on{background:var(--deep)}
+.say .ko{font-size:18px;font-weight:700;line-height:1.25}
+.say .pr{font-size:13px;color:var(--soft);margin-top:2px}
+.say .ru{color:var(--ink)}
+.yt{display:block;margin-top:5px;font-size:13px;color:#a3385a;text-decoration:underline;line-height:1.35}
+.yt span{display:block;color:var(--soft);text-decoration:none;font-size:12px}
+.ytl{text-align:left;margin-top:14px}.ytl .sub{font-size:15px;color:var(--deep);margin-bottom:2px}
+nav{flex:none;display:flex;gap:10px;margin-top:8px}
+nav button{flex:1;height:44px;border-radius:22px;border:1px solid var(--line);background:var(--card);color:var(--deep);font-size:15px;font-weight:700;cursor:pointer}
+nav button:disabled{opacity:.35;cursor:default}
+nav button.next{background:var(--brand);border-color:var(--brand);color:#fff}
+</style></head>
+<body><div class="app">
+<header><h1>LiyaJin School · Карточка дня №12</h1><span class="count" id="count" aria-live="polite"></span></header>
+<div class="dots" id="dots" aria-hidden="true"></div>
+<div class="stage" id="stage">
+  <img id="img" alt="">
+  <div class="end" id="end"></div>
+  <button class="tap l" id="tapL" aria-label="Предыдущая карточка"></button>
+  <button class="tap r" id="tapR" aria-label="Следующая карточка"></button>
+</div>
+<div class="panel" id="panel" aria-label="Фразы с аудио"></div>
+<nav><button id="prev" aria-label="Предыдущая карточка">◀ Назад</button><button id="next" class="next" aria-label="Следующая карточка">Вперёд ▶</button></nav>
+</div>
+<script>
+const D = {"n": 12, "slides": [{"img": "1.png", "say": [{"ko": "다행이다", "pron": "та(х)энида", "ru": "Слава богу! Какое облегчение!", "audio": "https://liyajincouple-collab.github.io/audio/w2_1023/1.mp3"}]}, {"img": "2.png", "say": [{"ko": "다행이다", "pron": "та(х)энида", "ru": "Слава богу! Какое облегчение!", "audio": "https://liyajincouple-collab.github.io/audio/w2_1023/1.mp3", "listen": [{"url": "https://youtu.be/x6J04ciDgDE?t=386", "title": "Лучшее корейское блюдо для Лии", "scene": "Про домашний пулькоги сказали «было очень вкусно», в ответ 다행이다!", "tm": "6:28"}]}, {"ko": "다행이에요", "pron": "та(х)эниэё", "ru": "Слава богу! Какое облегчение!", "audio": "https://liyajincouple-collab.github.io/audio/w2_1023/2.mp3"}]}, {"img": "3.png", "say": [{"ko": "설레요", "pron": "соллэё", "ru": "Сердце замирает (от ожидания)", "audio": "https://liyajincouple-collab.github.io/audio/w2_1023/3.mp3"}]}, {"img": "4.png", "say": [{"ko": "신나요", "pron": "синнаё", "ru": "Так весело! Здорово!", "audio": "https://liyajincouple-collab.github.io/audio/w2_1023/4.mp3"}]}, {"img": "5.png", "say": [{"ko": "아쉬워요", "pron": "асвивоё", "ru": "Жаль… / Обидно", "audio": "https://liyajincouple-collab.github.io/audio/w2_1023/5.mp3"}]}, {"img": "6.png", "say": [{"ko": "신나다", "pron": "", "ru": "", "audio": "https://liyajincouple-collab.github.io/audio/w2_1023/6.mp3"}, {"ko": "설레요", "pron": "соллэё", "ru": "Сердце замирает (от ожидания)", "audio": "https://liyajincouple-collab.github.io/audio/w2_1023/3.mp3"}, {"ko": "우", "pron": "", "ru": "", "audio": "https://liyajincouple-collab.github.io/audio/w2_1023/8.mp3"}, {"ko": "아쉽다", "pron": "", "ru": "", "audio": "https://liyajincouple-collab.github.io/audio/w2_1023/9.mp3"}, {"ko": "반가워요", "pron": "пангавоё!", "ru": "Рад(а) знакомству!", "audio": "https://liyajincouple-collab.github.io/audio/w1_1012/6_4.mp3"}, {"ko": "다음 주에 한국 가요. 너무 설레요!", "pron": "таым чуэ ханкук каё. ному соллэё!", "ru": "На следующей неделе еду в Корею. Сердце замирает!", "audio": "https://liyajincouple-collab.github.io/audio/w2_1023/12.mp3"}, {"ko": "콘서트가 끝났어요. 아쉬워요.", "pron": "кхонсотхыга кыннассоё. асвивоё.", "ru": "Концерт закончился. Жаль.", "audio": "https://liyajincouple-collab.github.io/audio/w2_1023/13.mp3"}, {"ko": "아쉽어요", "pron": "", "ru": "", "audio": "https://liyajincouple-collab.github.io/audio/w2_1023/14.mp3"}, {"ko": "아쉬워요", "pron": "асвивоё", "ru": "Жаль… / Обидно", "audio": "https://liyajincouple-collab.github.io/audio/w2_1023/5.mp3"}]}, {"img": "7.png", "say": []}, {"img": "8.png", "say": [{"ko": "비행기표 찾았어요!", "pron": "", "ru": "", "audio": "https://liyajincouple-collab.github.io/audio/w2_1023/20.mp3"}, {"ko": "다행이에요", "pron": "та(х)эниэё", "ru": "Слава богу! Какое облегчение!", "audio": "https://liyajincouple-collab.github.io/audio/w2_1023/2.mp3"}, {"ko": "아쉬워요", "pron": "асвивоё", "ru": "Жаль… / Обидно", "audio": "https://liyajincouple-collab.github.io/audio/w2_1023/5.mp3"}, {"ko": "카드로 할게요", "pron": "кхадыро хальккэё", "ru": "Оплачу картой", "audio": "https://liyajincouple-collab.github.io/audio/w1_1015/s05.mp3"}, {"ko": "안녕히 가세요", "pron": "", "ru": "До свидания (тому, кто уходит)", "audio": "https://liyajincouple-collab.github.io/audio/w1_1012/8_5.mp3"}]}, {"img": "9.png", "say": [{"ko": "아쉽다", "pron": "", "ru": "", "audio": "https://liyajincouple-collab.github.io/audio/w2_1023/9.mp3"}, {"ko": "아쉬워요", "pron": "асвивоё", "ru": "Жаль… / Обидно", "audio": "https://liyajincouple-collab.github.io/audio/w2_1023/5.mp3"}, {"ko": "우", "pron": "", "ru": "", "audio": "https://liyajincouple-collab.github.io/audio/w2_1023/8.mp3"}, {"ko": "다행이다", "pron": "та(х)энида", "ru": "Слава богу! Какое облегчение!", "audio": "https://liyajincouple-collab.github.io/audio/w2_1023/1.mp3"}, {"ko": "설레다", "pron": "", "ru": "", "audio": "https://liyajincouple-collab.github.io/audio/w2_1023/7.mp3"}, {"ko": "설레요", "pron": "соллэё", "ru": "Сердце замирает (от ожидания)", "audio": "https://liyajincouple-collab.github.io/audio/w2_1023/3.mp3"}]}, {"img": "10.png", "say": [{"ko": "다행이다", "pron": "та(х)энида", "ru": "Слава богу! Какое облегчение!", "audio": "https://liyajincouple-collab.github.io/audio/w2_1023/1.mp3"}, {"ko": "설레요", "pron": "соллэё", "ru": "Сердце замирает (от ожидания)", "audio": "https://liyajincouple-collab.github.io/audio/w2_1023/3.mp3"}, {"ko": "나 시험 붙었어!", "pron": "на сихом путхоссо!!", "ru": "Я сдал(а) экзамен!!", "audio": "https://liyajincouple-collab.github.io/audio/w1_1013/s07.mp3"}, {"ko": "진짜? 다행이다!", "pron": "", "ru": "", "audio": "https://liyajincouple-collab.github.io/audio/w2_1023/25.mp3"}, {"ko": "아쉬워요", "pron": "асвивоё", "ru": "Жаль… / Обидно", "audio": "https://liyajincouple-collab.github.io/audio/w2_1023/5.mp3"}, {"ko": "아쉽어요?", "pron": "", "ru": "", "audio": "https://liyajincouple-collab.github.io/audio/w2_1023/26.mp3"}]}, {"img": "11e.png", "say": [{"ko": "나 비행기표 샀어! 다음 주에 한국 가!", "pron": "на пи(х)энгипхё сассо! таым чуэ ханкук ка!", "ru": "Я купил(а) билет! На следующей неделе еду в Корею!", "audio": "https://liyajincouple-collab.github.io/audio/w2_1023/21.mp3"}, {"ko": "헉, 진짜? 다행이다!", "pron": "хок, чинчча? та(х)энида!", "ru": "Ничего себе, правда? Слава богу!", "audio": "https://liyajincouple-collab.github.io/audio/w2_1023/22.mp3"}, {"ko": "응, 너무 설레! ㅎㅎ", "pron": "ын, ному соллэ! хыхы", "ru": "Ага, сердце замирает! :)", "audio": "https://liyajincouple-collab.github.io/audio/w2_1023/23.mp3"}]}, {"img": "12e.png", "say": [{"ko": "다행이다", "pron": "та(х)энида", "ru": "Слава богу! Какое облегчение!", "audio": "https://liyajincouple-collab.github.io/audio/w2_1023/1.mp3"}, {"ko": "아쉬워요", "pron": "асвивоё", "ru": "Жаль… / Обидно", "audio": "https://liyajincouple-collab.github.io/audio/w2_1023/5.mp3"}, {"ko": "반가워요", "pron": "пангавоё!", "ru": "Рад(а) знакомству!", "audio": "https://liyajincouple-collab.github.io/audio/w1_1012/6_4.mp3"}]}], "end_title": "Это была последняя карточка", "end_line": "Следующая карточка — завтра в 08:00 (МСК).", "reply_line": "Есть вопрос по фразам? Ответь на письмо — Джин подскажет.", "full_label": "Все фразы дня подряд:", "listen_label": "Где это услышать", "listen": [{"url": "https://youtu.be/x6J04ciDgDE?t=386", "title": "Лучшее корейское блюдо для Лии", "scene": "Про домашний пулькоги сказали «было очень вкусно», в ответ 다행이다!", "tm": "6:28"}, {"url": "https://youtu.be/8MycyfiuB6g?t=126", "title": "Снова на рыбалку за чжуккуми", "scene": "Перед рыбалкой", "tm": "2:08"}], "full_audio": "https://liyajincouple-collab.github.io/audio/w2_1023.mp3"};
+const N = D.slides.length + 1;            // + последний экран
+let k = 0;
+const $ = id => document.getElementById(id);
+const player = new Audio(); player.preload = "none";
+let playing = null;
+function stop(){ player.pause(); if (playing) playing.classList.remove("on"), playing.textContent = "▶"; playing = null; }
+player.onended = stop;
+function esc(s){ return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+$("dots").innerHTML = Array.from({length:N}, () => "<i></i>").join("");
+$("end").innerHTML = '<b>' + esc(D.end_title) + '</b><p>' + esc(D.end_line) + '</p><p>' + esc(D.reply_line) + '</p>' +
+  ((D.listen || []).length ? '<div class="ytl"><b class="sub">' + esc(D.listen_label) + '</b>' + D.listen.map(L => '<a class="yt" href="' + esc(L.url) + '" target="_blank" rel="noopener">▶ ' + esc(L.title) + ' — ' + esc(L.tm) + '<span>' + esc(L.scene) + '</span></a>').join('') + '</div>' : '') +
+  (D.full_audio ? '<p>' + esc(D.full_label) + '</p><audio controls preload="none" src="' + esc(D.full_audio) + '"></audio>' : '');
+function show(i, push){
+  k = Math.max(0, Math.min(N - 1, i));
+  stop(); const fa = $("end").querySelector("audio"); if (fa) fa.pause();
+  const last = k === N - 1;
+  $("img").style.display = last ? "none" : "";
+  $("end").style.display = last ? "block" : "none";
+  let html = "";
+  if (!last) {
+    const s = D.slides[k];
+    $("img").src = s.img; $("img").alt = "Слайд " + (k + 1) + " из " + D.slides.length;
+    for (const x of s.say) html += '<div class="say"><button data-a="' + esc(x.audio) + '" aria-label="Слушать: ' + esc(x.ko) + '">▶</button><div><div class="ko" lang="ko">' + esc(x.ko) + '</div>' + ((x.pron || x.ru) ? '<div class="pr">' + (x.pron ? '[' + esc(x.pron) + ']' : '') + (x.pron && x.ru ? ' — ' : '') + (x.ru ? '<span class="ru">' + esc(x.ru) + '</span>' : '') + '</div>' : '') + (x.listen || []).map(L => '<a class="yt" href="' + esc(L.url) + '" target="_blank" rel="noopener">▶ ' + esc(D.listen_label) + ': ' + esc(L.scene) + ' — ' + esc(L.tm) + '</a>').join('') + '</div></div>';
+    if (k + 1 < D.slides.length) { const p = new Image(); p.src = D.slides[k + 1].img; }
+  }
+  $("panel").innerHTML = html; $("panel").scrollTop = 0;
+  $("panel").style.display = html ? "" : "none";
+  [...$("dots").children].forEach((d, j) => d.classList.toggle("on", j <= k));
+  $("count").textContent = (k + 1) + "/" + N;
+  $("prev").disabled = k === 0; $("next").disabled = last;
+  $("tapL").style.display = (k === 0 || last) ? "none" : ""; $("tapR").style.display = last ? "none" : "";
+  if (push !== false) history.replaceState(null, "", "#" + (k + 1));
+}
+$("panel").addEventListener("click", e => {
+  const b = e.target.closest("button[data-a]"); if (!b) return;
+  if (playing === b) { stop(); return; }
+  stop(); player.src = b.dataset.a; player.play().catch(() => {}); b.classList.add("on"); b.textContent = "■"; playing = b;
+});
+$("prev").onclick = $("tapL").onclick = () => show(k - 1);
+$("next").onclick = $("tapR").onclick = () => show(k + 1);
+document.addEventListener("keydown", e => { if (e.key === "ArrowLeft") show(k - 1); if (e.key === "ArrowRight") show(k + 1); });
+let x0 = null, y0 = 0;
+$("stage").addEventListener("touchstart", e => { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, {passive:true});
+$("stage").addEventListener("touchend", e => {
+  if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0; x0 = null;
+  if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) { e.preventDefault(); show(k + (dx < 0 ? 1 : -1)); }
+});
+window.addEventListener("hashchange", () => { const n = parseInt(location.hash.slice(1)); if (n && n - 1 !== k) show(n - 1, false); });
+show((parseInt(location.hash.slice(1)) || 1) - 1, false);
+</script></body></html>
